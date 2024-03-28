@@ -1,7 +1,6 @@
 import allure
 import pytest
 from data.main_page_data import important_things_questions
-from locators.main_page_locators import MainPageLocators
 from shared_methods import SharedMethods
 from pages.main_page import MainPage
 
@@ -18,11 +17,11 @@ class TestMainPage:
         main_page = MainPage(driver)
         SharedMethods.get_main_page(driver)
         num = important_things_questions.index(item)
-        question_text = main_page.find_important_things_entity(MainPageLocators.IMPORTANT_THINGS_QUESTION, num)
-        main_page.scroll_to_question(MainPageLocators.IMPORTANT_THINGS_QUESTION, num)
-        main_page.click_question(MainPageLocators.IMPORTANT_THINGS_QUESTION, num)
-        # time.sleep(5)
-        answer_text = main_page.find_important_things_entity(MainPageLocators.IMPORTANT_THINGS_ANSWER, num)
+        question_text = main_page.find_important_things_question(num)
+        main_page.scroll_to_question(num)
+        main_page.click_question(num)
+
+        answer_text = main_page.find_important_things_answer(num)
         assert question_text == item['question']
         assert answer_text == item['answer']
 

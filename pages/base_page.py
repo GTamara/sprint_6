@@ -64,3 +64,6 @@ class BasePage:
         if bool(current_value) != checked:
             checkbox.click()
 
+    def switch_to_next_browser_tab(self):
+        self.driver.switch_to.window(self.driver.window_handles[1])
+
